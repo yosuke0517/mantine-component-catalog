@@ -10,19 +10,16 @@ type ActionButtonProps = {
 
 type ButtonType = 'main' | 'sub'
 
-const mappedColor = {}
-
 export const BUTTON_TYPES = {
   Main: 'main',
   Sub: 'sub',
 } as const
 
-export type ButtonTypesKeys = keyof typeof BUTTON_TYPES
-export type MappedButtonTypes = typeof BUTTON_TYPES[ButtonTypesKeys]
+export type ButtonTypeKeys = keyof typeof BUTTON_TYPES
+export type ButtonTypeValues = typeof BUTTON_TYPES[ButtonTypeKeys]
 
-/** 希望の業務内容の選択肢 */
 export const MAPPED_BUTTON_TYPES_LABEL: {
-  [key in MappedButtonTypes]: string
+  [key in ButtonTypeValues]: string
 } = {
   [BUTTON_TYPES.Main]: 'orange',
   [BUTTON_TYPES.Sub]: 'indigo',
