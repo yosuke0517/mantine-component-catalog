@@ -1,14 +1,17 @@
+/** アイコンを付与できるボタン */
 import React, { FC, MouseEventHandler, ReactNode } from 'react'
-import { Flower, FlowerOff } from 'tabler-icons-react'
+import { Flower, FlowerOff, Icon } from 'tabler-icons-react'
 import { Button } from '@mantine/core'
 
-type ActionButtonProps = {
-  type: ButtonType
+type AttachableIconButtonProps = {
+  type: AttachableIconButtonType
+  leftIcon?: ReactNode
+  rightIcon?: ReactNode
   callback?: MouseEventHandler<HTMLButtonElement>
   children: ReactNode
 }
 
-type ButtonType = 'main' | 'sub'
+export type AttachableIconButtonType = 'main' | 'sub'
 
 export const BUTTON_TYPES = {
   Main: 'main',
@@ -26,27 +29,25 @@ export const MAPPED_BUTTON_TYPES_LABEL: {
 }
 
 /** ButtonTypeに応じたcolorを返します */
-const buttonTypeComputed = (type: ButtonType): string => {
+const buttonTypeComputed = (type: AttachableIconButtonType): string => {
   return MAPPED_BUTTON_TYPES_LABEL[type]
 }
 
-export const ActionButton: FC<ActionButtonProps> = ({
+export const AttachableIconButton: FC<AttachableIconButtonProps> = ({
   type,
   children,
   callback,
+  leftIcon = null,
+  rightIcon = null,
 }) => {
   return (
     <Button
-      classNames={{
-        leftIcon: 'text-pink-500 h-6 w-6',
-        rightIcon: 'text-orange-500 h-6 w-6',
-      }}
       color={buttonTypeComputed(type)}
       radius="xl"
       size="md"
       uppercase
-      leftIcon={<FlowerOff />}
-      rightIcon={<Flower />}
+      leftIcon={leftIcon}
+      rightIcon={rightIcon}
       onClick={callback}
     >
       {children}
