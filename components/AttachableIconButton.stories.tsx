@@ -114,5 +114,5 @@ export const TemplateTest = Template.bind({})
 TemplateTest.args = {
   type: 'main',
   callback,
-  children: <span>AttachableIconButton Template Test</span>,
+  children: <span>画面上でPropsが触れるヤツ</span>,
 }
