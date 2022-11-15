@@ -5,6 +5,7 @@ import {
   AttachableIconButtonType,
 } from './AttachableIconButton'
 import { Flower } from 'tabler-icons-react'
+// @ts-ignore
 import MDXDocument from './AttachableIconButton.mdx'
 
 export default {
