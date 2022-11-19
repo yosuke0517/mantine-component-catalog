@@ -1,11 +1,13 @@
 # mantine-component-catalog
 
 作成日：2022/11/15
-更新日：2022/11/15
+更新日：2022/11/19
 
 ### Webアプリにてよくあるコンポーネントをmantineで作ったやつ
 ※余裕があったら素のreactで作ってみて比較したい（きっつ）
 
+### storybookをデプロイして誰でも見れるようにしてみた
+https://storybook-for-mantine-component-catalog-pfzo.vercel.app/
 
 ### コンポーネントの命名
 - 1コンポーネントにつき下記３ファイルが存在する。
