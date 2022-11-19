@@ -6,8 +6,14 @@ SignupEmailForm はカスタムボタンコンポーネントです。
 - `ログインモード`・`登録モード`が切り替え可能です。
 - セキュリティの観点から各モードに応じてパスワードのバリデーションを切り替えています。
 
+### Props
+- signupCallback: 登録時のコールバック
+- signinCallback: ログイン時のコールバック
+
 ```tsx
-<SignupEmailForm />
+const signupCallback = () => alert('signupCallback');
+const signinCallback = () => alert('signinCallback');
+<SignupEmailForm signupCallback={signupCallback} signinCallback={signinCallback} />
 ```
 
-<SignupEmailForm />
+<SignupEmailForm signupCallback={signupCallback} signinCallback={signinCallback} />

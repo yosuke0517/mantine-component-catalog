@@ -1,4 +1,4 @@
-import { FC, FormEvent, ReactNode, useState } from 'react'
+import { FC, FormEvent, MouseEventHandler, ReactNode, useState } from 'react'
 import * as Yup from 'yup'
 import { ShieldCheckIcon } from '@heroicons/react/solid'
 import { useForm, yupResolver } from '@mantine/form'
@@ -15,8 +15,18 @@ import {
   TextInput,
 } from '@mantine/core'
 import { ExclamationCircleIcon } from '@heroicons/react/outline'
+import { ApiError } from '@supabase/gotrue-js'
+import { UseFormReturnType } from '@mantine/form/lib/use-form'
 
-export const SignupEmailForm: FC = ({}) => {
+type SignupEmailFormProps = {
+  signupCallback: (form: UseFormReturnType<IForm>) => Promise<ApiError | null>
+  signinCallback: (form: UseFormReturnType<IForm>) => Promise<ApiError | null>
+}
+
+export const SignupEmailForm: FC<SignupEmailFormProps> = ({
+  signupCallback,
+  signinCallback,
+}) => {
   const [isRegister, setIsRegister] = useState(false)
   const [error, setError] = useState('')
   const schema = Yup.object({
@@ -45,22 +55,16 @@ export const SignupEmailForm: FC = ({}) => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (isRegister) {
-      const { error } = await supabase.auth.signUp({
-        email: form.values.email,
-        password: form.values.password,
+      const error = signupCallback(form)
+      error.then((e) => {
+        if (e?.message) setError(e.message)
       })
-      if (error) {
-        setError(error.message)
-      }
       form.reset()
     } else {
-      const { error } = await supabase.auth.signIn({
-        email: form.values.email,
-        password: form.values.password,
+      const error = signinCallback(form)
+      error.then((e) => {
+        if (e?.message) setError(e.message)
       })
-      if (error) {
-        setError(error.message)
-      }
       form.reset()
     }
   }
