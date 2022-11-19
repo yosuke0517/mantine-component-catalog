@@ -5,7 +5,7 @@ import { SignupEmailForm } from './SignupEmailForm'
 import MDXDocument from './SignupEmailForm.mdx'
 import { UseFormReturnType } from '@mantine/form/lib/use-form'
 import { IForm } from '../types'
-import { supabase } from '../utils/supabase'
+import { ApiError } from '@supabase/gotrue-js'
 
 export default {
   title: 'SignupEmailForm',
@@ -18,19 +18,20 @@ export default {
   },
 } as ComponentMeta<typeof SignupEmailForm>
 
-const signupCallback = async (form: UseFormReturnType<IForm>) => {
-  const { error } = await supabase.auth.signUp({
-    email: form.values.email,
-    password: form.values.password,
+const signupCallback = async (_form: UseFormReturnType<IForm>) => {
+  return new Promise<ApiError | null>((resolve, _reject) => {
+    const { error } = { error: { message: '', status: 200 } as ApiError }
+    alert('signupCallback')
+    resolve(error)
   })
-  return error
 }
-const signinCallback = async (form: UseFormReturnType<IForm>) => {
-  const { error } = await supabase.auth.signIn({
-    email: form.values.email,
-    password: form.values.password,
+const signinCallback = async (_form: UseFormReturnType<IForm>) => {
+  return new Promise<ApiError | null>((resolve, _reject) => {
+    const { error } = {
+      error: { message: 'invalid email', status: 400 } as ApiError,
+    }
+    resolve(error)
   })
-  return error
 }
 // テンプレートコンポーネントを実装
 // Storybookから渡されたpropsをそのままButtonに渡す
