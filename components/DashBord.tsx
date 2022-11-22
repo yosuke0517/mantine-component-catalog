@@ -2,16 +2,15 @@ import { ShieldCheckIcon } from '@heroicons/react/solid'
 import { LogoutIcon } from '@heroicons/react/outline'
 import { ActionIcon, Center, Menu } from '@mantine/core'
 import { supabase } from '../utils/supabase'
-import { Layout } from '../components/Layout'
+import { Layout } from './Layout'
 import { Settings } from 'tabler-icons-react'
-import { NextLink } from '@mantine/next'
 
 export const DashBord = ({}) => {
   const signOut = () => {
     // TODO フラッシュメッセージにする
     supabase.auth
       .signOut()
-      .then((r) => console.log('ログアウトしました。'))
+      .then((r) => console.log(r))
       .catch((e) => {
         console.log('ログアウト失敗')
         console.error(e)
@@ -40,6 +39,13 @@ export const DashBord = ({}) => {
             icon={<Settings size={16} />}
           >
             MultiSelect
+          </Menu.Item>
+          <Menu.Item
+            component="a"
+            href="/fetch-api"
+            icon={<Settings size={16} />}
+          >
+            Fetch Api（Loading）
           </Menu.Item>
         </Menu>
       </Center>
