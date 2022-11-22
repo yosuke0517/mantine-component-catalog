@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { Center, Loader } from '@mantine/core'
 
 export type LoadingProps = {
-  color:
+  color?:
     | 'gray'
     | 'red'
     | 'pink'
@@ -14,11 +14,15 @@ export type LoadingProps = {
     | 'lime'
     | 'yellow'
     | 'orange'
-  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-  variant: 'oval' | 'bars' | 'dots'
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+  variant?: 'oval' | 'bars' | 'dots'
 }
 
-export const Loading: FC<LoadingProps> = ({ color, size, variant }) => {
+export const Loading: FC<LoadingProps> = ({
+  color = 'indigo',
+  size = 'md',
+  variant = 'oval',
+}) => {
   return (
     <Center>
       <Loader color={color} size={size} variant={variant} />
