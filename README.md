@@ -4,10 +4,12 @@
 更新日：2022/11/19
 
 ### Webアプリにてよくあるコンポーネントをmantineで作ったやつ
-※余裕があったら素のreactで作ってみて比較したい（きっつ）
+※余裕があったら素のreactで作ってみて比較したい
 
-### storybookをデプロイして誰でも見れるようにしてみた
-https://storybook-for-mantine-component-catalog-pfzo.vercel.app/
+### デプロイ（コンポーネントカタログなのでstorybookの方を見てほしいかも）
+[デモページ](https://mantine-component-catalog.vercel.app/) ※使用するにはメールアドレス認証が必要になります
+[storybook](https://storybook-for-mantine-component-catalog-pfzo.vercel.app/)
+
 
 ### コンポーネントの設計・命名（今までやったことないけど以下のようにやってみる）
 - Atomic Design は一旦使用しない（基本はUIコンポーネントを使用するのでそれを勘案してコンポーネントを配置するのはしんどい）
