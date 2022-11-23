@@ -1,6 +1,5 @@
 /** アイコンを付与できるボタン */
 import React, { FC, MouseEventHandler, ReactNode } from 'react'
-import { Flower, FlowerOff, Icon } from 'tabler-icons-react'
 import { Button } from '@mantine/core'
 
 type AttachableIconButtonProps = {
@@ -11,11 +10,12 @@ type AttachableIconButtonProps = {
   children: ReactNode
 }
 
-export type AttachableIconButtonType = 'main' | 'sub'
+export type AttachableIconButtonType = 'main' | 'sub' | 'cancel'
 
 export const BUTTON_TYPES = {
   Main: 'main',
   Sub: 'sub',
+  Cancel: 'cancel',
 } as const
 
 export type ButtonTypeKeys = keyof typeof BUTTON_TYPES
@@ -26,6 +26,7 @@ export const MAPPED_BUTTON_TYPES_LABEL: {
 } = {
   [BUTTON_TYPES.Main]: 'orange',
   [BUTTON_TYPES.Sub]: 'indigo',
+  [BUTTON_TYPES.Cancel]: 'gray',
 }
 
 /** ButtonTypeに応じたcolorを返します */
@@ -42,6 +43,7 @@ export const AttachableIconButton: FC<AttachableIconButtonProps> = ({
 }) => {
   return (
     <Button
+      className="w-112"
       color={buttonTypeComputed(type)}
       radius="xl"
       size="md"
