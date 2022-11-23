@@ -4,6 +4,7 @@ import { AttachableIconButton } from './AttachableIconButton'
 
 export type ModalContainerProps = {
   opened: boolean
+  title: string
   callback?: () => void
   close: () => void
   closeCallback: () => void
@@ -13,13 +14,14 @@ export type ModalContainerProps = {
 export const ModalContainer: FC<ModalContainerProps> = ({
   opened,
   close,
+  title,
   callback,
   closeCallback,
   children,
 }) => {
   return (
     <Modal
-      title="モーダルタイトルが入ります"
+      title={title}
       centered
       opened={opened}
       onClose={() => closeCallback()}
@@ -27,7 +29,7 @@ export const ModalContainer: FC<ModalContainerProps> = ({
       <Paper>
         {children}
         {callback ? (
-          <Group position="center">
+          <Group position="center" my="md">
             <AttachableIconButton type="cancel" callback={closeCallback}>
               <span>Cancel</span>
             </AttachableIconButton>

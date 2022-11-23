@@ -28,6 +28,7 @@ export const Plane = (props: ModalContainerProps) => {
   return (
     <>
       <ModalContainer
+        title="タイトルが入ります"
         opened={opened}
         close={() => setOpened(false)}
         closeCallback={() => setOpened(false)}
@@ -46,6 +47,7 @@ export const ExistCallback = (props: ModalContainerProps) => {
   return (
     <>
       <ModalContainer
+        title="タイトルが入ります"
         opened={opened}
         close={() => close()}
         callback={callback}

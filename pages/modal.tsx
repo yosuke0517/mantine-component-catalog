@@ -11,11 +11,15 @@ const ModalDemo = () => {
   return (
     <Layout title="Modal">
       <ModalContainer
+        title="モーダルのタイトルが入ります"
         opened={opened}
         close={() => setOpened(false)}
+        callback={() => alert('callback')}
         closeCallback={() => setOpened(false)}
       >
-        <Paper>hoge</Paper>
+        <Paper>
+          モーダルの内容が入ります（callbackを入れるとボタンが表示されます）
+        </Paper>
       </ModalContainer>
       <Group direction="column" position="center">
         <Button onClick={() => setOpened(true)}>Open Modal</Button>
