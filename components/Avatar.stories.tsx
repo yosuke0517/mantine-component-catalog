@@ -2,6 +2,7 @@ import { Mavatar } from './Avatar'
 import { ComponentMeta } from '@storybook/react'
 import { Loading, LoadingProps } from './Loading'
 import Link from 'next/link'
+import { ChangeEvent } from 'react'
 
 export default {
   title: 'Avatar',
@@ -22,8 +23,8 @@ export default {
 } as ComponentMeta<typeof Mavatar>
 
 export const AvatarDemo = () => {
-  const callback = (url: string) => {
-    alert(`cahngeUrl${url}`)
+  const callback = (e: ChangeEvent<HTMLInputElement>) => {
+    alert('upload demo!!')
   }
   const avatarUrl = `${process.env.NEXT_PUBLIC_SUPABASE_STORAGE_URL}/avatars/${process.env.NEXT_PUBLIC_SAMPLE_IMAGE_NAME}`
   return (
@@ -37,7 +38,7 @@ export const AvatarDemo = () => {
           画像のアップロードはデモページにてログイン後ご確認ください
         </p>
       </a>
-      <Mavatar url={avatarUrl} setAvatarUrlCallback={(url) => callback(url)} />
+      <Mavatar url={avatarUrl} uploadCallback={(e) => callback(e)} />
     </>
   )
 }
