@@ -11,7 +11,7 @@ type AvatarProps = {
 export const Mavatar: FC<AvatarProps> = ({
   url,
   uploadCallback,
-  size = 'xl',
+  size = 'lg',
 }) => {
   return (
     <Center>
@@ -22,9 +22,9 @@ export const Mavatar: FC<AvatarProps> = ({
         position="center"
         my="0"
       >
-        {url && <Avatar size={size} src={url} />}
+        {url && <Avatar size={size} src={url} radius="xl" />}
 
-        <label htmlFor="avatar" className="absolute -bottom-2 left-24">
+        <label htmlFor="avatar" className="absolute -bottom-2 left-20">
           <CameraIcon className="my-0 h-7 w-7 cursor-pointer text-gray-500" />
         </label>
         <input
