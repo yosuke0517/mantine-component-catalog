@@ -2,13 +2,12 @@ import { ChangeEvent, useState, useEffect } from 'react'
 import { supabase } from '../utils/supabase'
 import { Layout } from '../components/Layout'
 import { Mavatar } from '../components/Avatar'
-import { Center, Group } from '@mantine/core'
+import { Center, Group, LoadingOverlay } from '@mantine/core'
+import { uploadAvatarImage } from '../utils/uploadImage'
 
 const AvatarDemo = () => {
   const [avatarUrl, setAvatarUrl] = useState('')
-  const changeAvatarUrl = (url: string) => {
-    setAvatarUrl(url)
-  }
+  const [isLoading, setIsLoading] = useState(false)
   useEffect(() => {
     // profileからアバターのURLを取得しURLがなければ
     const getProfile = async () => {
@@ -26,13 +25,24 @@ const AvatarDemo = () => {
     }
     getProfile()
   }, [])
+
+  const uploadAvatarImageCallback = async (
+    e: ChangeEvent<HTMLInputElement>
+  ) => {
+    setIsLoading(true)
+    const result = await uploadAvatarImage(e)
+    if (result) setAvatarUrl(result)
+    setIsLoading(false)
+  }
+
   return (
     <Layout title="Profile">
       <Group position="center" direction="column">
+        <LoadingOverlay visible={isLoading} />
         <p>アバター写真をPOST出来ます</p>
         <Mavatar
           url={`${process.env.NEXT_PUBLIC_SUPABASE_STORAGE_URL}/avatars/${avatarUrl}`}
-          setAvatarUrlCallback={(url) => changeAvatarUrl(url)}
+          uploadCallback={(e) => uploadAvatarImageCallback(e)}
         />
       </Group>
     </Layout>
