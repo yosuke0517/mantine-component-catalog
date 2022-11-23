@@ -47,6 +47,9 @@ export const DashBord = ({}) => {
           >
             Fetch Api（Loading）
           </Menu.Item>
+          <Menu.Item component="a" href="/modal" icon={<Settings size={16} />}>
+            Modal Demo
+          </Menu.Item>
         </Menu>
       </Center>
 

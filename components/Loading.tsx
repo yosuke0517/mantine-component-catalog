@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { Center, Loader } from '@mantine/core'
 
+/** 基本的にはローディングに色の指定が必要な機会はないと思うが今回はデモなので見た目が映えるよう入れてみた */
 export type LoadingProps = {
   color?:
     | 'gray'
