@@ -4,6 +4,8 @@ import { Layout } from '../components/Layout'
 import { Mavatar } from '../components/Avatar'
 import { Center, Group, LoadingOverlay } from '@mantine/core'
 import { uploadAvatarImage } from '../utils/uploadImage'
+import Link from 'next/link'
+import { ReplyIcon } from '@heroicons/react/solid'
 
 const AvatarDemo = () => {
   const [avatarUrl, setAvatarUrl] = useState('')
@@ -45,6 +47,11 @@ const AvatarDemo = () => {
           uploadCallback={(e) => uploadAvatarImageCallback(e)}
         />
       </Group>
+      <Center>
+        <Link href="/">
+          <ReplyIcon className="mt-4 h-6 w-6 cursor-pointer text-gray-300" />
+        </Link>
+      </Center>
     </Layout>
   )
 }
