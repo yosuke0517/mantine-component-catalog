@@ -53,6 +53,9 @@ export const DashBord = ({}) => {
           <Menu.Item component="a" href="/avatar" icon={<Settings size={16} />}>
             Avatar Demo
           </Menu.Item>
+          <Menu.Item component="a" href="/card" icon={<Settings size={16} />}>
+            Card Demo
+          </Menu.Item>
         </Menu>
       </Center>
 
