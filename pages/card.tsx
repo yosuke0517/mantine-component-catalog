@@ -21,6 +21,12 @@ import { supabase } from '../utils/supabase'
 import { Layout } from '../components/Layout'
 import { CustomCard } from '../components/CustomCard'
 import { useQueryPosts } from '../hooks/useQueryPosts'
+import {
+  MAPPED_RECRUIT_TYPE_COLOR,
+  MAPPED_RECRUIT_TYPE_LABEL,
+  RECRUIT_SELECT_OPTIONS,
+  RecruitTypeValue,
+} from '../const/recruit'
 
 const schema = Yup.object().shape({
   title: Yup.string().required('No title provided.'),
@@ -33,6 +39,14 @@ const PostList = () => {
   const { data } = useQueryPosts()
   const [isLoading, setIsLoading] = useState(false)
   const [postUrl, setPostUrl] = useState('')
+  const recruitBadgeComputed = (status: RecruitTypeValue | '') => {
+    if (!status) return ''
+    return MAPPED_RECRUIT_TYPE_LABEL[status]
+  }
+  const badgeColorComputed = (status: RecruitTypeValue | '') => {
+    if (!status) return ''
+    return MAPPED_RECRUIT_TYPE_COLOR[status]
+  }
   const form = useForm<Omit<Post, 'id' | 'created_at' | 'post_url'>>({
     schema: yupResolver(schema),
     initialValues: {
@@ -93,7 +107,7 @@ const PostList = () => {
           />
           <Select
             label="Status*"
-            data={['New', 'PickUp', '人気']}
+            data={RECRUIT_SELECT_OPTIONS}
             {...form.getInputProps('status')}
           />
           <Center>{isLoading && <Loader my="xl" />}</Center>
@@ -126,7 +140,7 @@ const PostList = () => {
       <Text className="my-6 text-center text-5xl font-bold">おすすめ求人</Text>
       <Grid>
         {data?.map((post) => (
-          <Grid.Col key={post.id} span={3}>
+          <Grid.Col key={post.id} xl={3} lg={4} md={6} sm={12}>
             <CustomCard
               postUrl={
                 post.post_url
@@ -134,7 +148,8 @@ const PostList = () => {
                   : ''
               }
               title={post.title}
-              status={post.status}
+              status={recruitBadgeComputed(post.status)}
+              badgeColor={badgeColorComputed(post.status)}
               content={post.content}
             />
           </Grid.Col>

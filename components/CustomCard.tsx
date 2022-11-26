@@ -5,6 +5,7 @@ type CustomCardProps = {
   title: string
   content: string
   status: string
+  badgeColor: string
   postUrl: string
 }
 
@@ -12,27 +13,30 @@ export const CustomCard: FC<CustomCardProps> = ({
   title,
   content,
   status,
+  badgeColor,
   postUrl,
 }) => {
   return (
-    <Card shadow="md" className="h-full max-w-lg">
+    <Card shadow="md" className="mx-auto h-full max-w-lg">
       <Card.Section>
         <Image
           src={postUrl}
           height={220}
-          fit="contain"
-          className="object-contain"
+          fit="cover"
+          className="object-center"
           alt="With default placeholder"
           withPlaceholder
         />
       </Card.Section>
-      <Group position="apart" my="md">
-        <Text weight={800}>{title}</Text>
-        <Badge color="pink" radius="lg" variant="filled">
-          {status}
-        </Badge>
-      </Group>
-      <Text size="sm">{content}</Text>
+      <Text mt="md" lineClamp={1} weight={800}>
+        {title}
+      </Text>
+      <Badge mt="md" color={badgeColor} radius="lg" variant="filled">
+        {status}
+      </Badge>
+      <Text mt="md" className="h-16 max-h-16" size="sm" lineClamp={3}>
+        {content}
+      </Text>
       <Button
         onClick={() => alert('click!!')}
         mt="md"
@@ -41,7 +45,7 @@ export const CustomCard: FC<CustomCardProps> = ({
         color="indigo"
         fullWidth
       >
-        Subscribe
+        応募する
       </Button>
     </Card>
   )
