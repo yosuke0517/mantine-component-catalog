@@ -1,3 +1,5 @@
+import { RecruitTypeValue } from '../const/recruit'
+
 export type IForm = {
   email: string
   password: string
@@ -25,5 +27,5 @@ export type Post = {
   title: string
   content: string
   post_url: string
-  status: string
+  status: RecruitTypeValue | ''
 }

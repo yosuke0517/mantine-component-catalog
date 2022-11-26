@@ -25,6 +25,19 @@ export const CustomCardDemo = () => {
       title="簡単なお仕事です"
       content="空港にいる男性から荷物を受け取る簡単なお仕事です"
       status="New"
+      badgeColor="pink"
+      postUrl="/images/developer.png"
+    />
+  )
+}
+
+export const CustomCardLongText = () => {
+  return (
+    <CustomCard
+      title="4行以降は改行"
+      content="長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト長文テスト"
+      status="PICKUP"
+      badgeColor="green"
       postUrl="/images/developer.png"
     />
   )
