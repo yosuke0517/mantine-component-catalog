@@ -47,7 +47,7 @@ export const ExistCallback = (props: ModalContainerProps) => {
   return (
     <>
       <ModalContainer
-        title="タイトルが入ります"
+        title={props.title}
         opened={opened}
         close={() => close()}
         callback={callback}
