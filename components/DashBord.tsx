@@ -56,6 +56,13 @@ export const DashBord = ({}) => {
           <Menu.Item component="a" href="/card" icon={<Settings size={16} />}>
             Card Demo
           </Menu.Item>
+          <Menu.Item
+            component="a"
+            href="/match-rate"
+            icon={<Settings size={16} />}
+          >
+            Match Rate Demo
+          </Menu.Item>
         </Menu>
       </Center>
 

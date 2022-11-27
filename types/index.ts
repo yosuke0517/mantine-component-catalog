@@ -29,3 +29,9 @@ export type Post = {
   post_url: string
   status: RecruitTypeValue | ''
 }
+
+export type MatchRate = {
+  id: number
+  created_at: string
+  match_rate: number
+}
