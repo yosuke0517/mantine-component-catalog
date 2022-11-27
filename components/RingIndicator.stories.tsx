@@ -22,9 +22,9 @@ export default {
 export const RingIndicatorDemo = (props: RingIndicatorProps) => {
   return (
     <RingIndicator
-      title={props.title}
-      color={props.color}
-      value={props.value}
+      title={props.title || 'タイトルが入ります'}
+      color={props.color || 'blue'}
+      value={props.value || 88}
     />
   )
 }
