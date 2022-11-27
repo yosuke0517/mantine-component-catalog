@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Badge, Button, Card, Group, Image, Text } from '@mantine/core'
 
-type CustomCardProps = {
+export type CustomCardProps = {
   title: string
   content: string
   status: string
