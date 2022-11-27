@@ -1,4 +1,4 @@
-import { RingIndicator } from './RingIndicator'
+import { RingIndicator, RingIndicatorProps } from './RingIndicator'
 import { ComponentMeta } from '@storybook/react'
 
 export default {
@@ -19,6 +19,12 @@ export default {
   },
 } as ComponentMeta<typeof RingIndicator>
 
-export const RingIndicatorDemo = () => {
-  return <RingIndicator title="タイトルが入ります" color="blue" value={88} />
+export const RingIndicatorDemo = (props: RingIndicatorProps) => {
+  return (
+    <RingIndicator
+      title={props.title}
+      color={props.color}
+      value={props.value}
+    />
+  )
 }

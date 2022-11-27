@@ -1,4 +1,4 @@
-import { CustomCard } from './CustomCard'
+import { CustomCard, CustomCardProps } from './CustomCard'
 import { ComponentMeta } from '@storybook/react'
 
 export default {
@@ -19,13 +19,15 @@ export default {
   },
 } as ComponentMeta<typeof CustomCard>
 
-export const CustomCardDemo = () => {
+export const CustomCardDemo = (props: CustomCardProps) => {
   return (
     <CustomCard
-      title="簡単なお仕事です"
-      content="空港にいる男性から荷物を受け取る簡単なお仕事です"
-      status="New"
-      badgeColor="pink"
+      title={props.title || '簡単なお仕事です'}
+      content={
+        props.content || '空港にいる男性から荷物を受け取る簡単なお仕事です'
+      }
+      status={props.status || 'New'}
+      badgeColor={props.badgeColor || 'pink'}
       postUrl="/images/developer.png"
     />
   )
