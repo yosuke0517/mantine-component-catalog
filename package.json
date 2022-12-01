@@ -17,7 +17,7 @@
     "@mantine/form": "4.2.5",
     "@mantine/hooks": "4.2.5",
     "@mantine/next": "4.2.5",
-    "@mantine/notifications": "4.2.5",
+    "@mantine/notifications": "^5.8.4",
     "@supabase/supabase-js": "1.33.3",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
