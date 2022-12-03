@@ -1,4 +1,4 @@
-import React, { ComponentProps, FC, ReactNode, useRef, useState } from 'react'
+import React, { ComponentProps, FC, useRef, useState } from 'react'
 import { Todo } from '../types'
 import { Group } from '@mantine/core'
 import { MAPPED_TODO_PRIORITY_LABEL } from '../const/recruit'
@@ -23,7 +23,7 @@ export const DraggableY: FC<DraggableProps> = ({ initialItems, onChange }) => {
    * ドラッグを開始する要素に設定するpropsを生成する
    * こう書くとイベントハンドリングをまとめて設定できる
    */
-  const getHandleProps = (item: Todo, index: number): ComponentProps<'li'> => {
+  const getHandleProps = (item: Todo, _index: number): ComponentProps<'li'> => {
     return {
       onDragStart(event) {
         // activeIdを設定
@@ -43,18 +43,13 @@ export const DraggableY: FC<DraggableProps> = ({ initialItems, onChange }) => {
           event.dataTransfer.setDragImage(elm, posX, posY)
         }
       },
-      onDragEnd(event) {
+      onDragEnd(_event) {
         // activeIdから移動中のアイテムのindexを取得
         const currentIndex = items?.findIndex(
           (target) => target.id === activeId
         )
         // indexが有効範囲であれば移動を実行
-        if (
-          items &&
-          typeof currentIndex === 'number' &&
-          currentIndex >= 0 &&
-          targetIndex >= 0
-        ) {
+        if (items && currentIndex && currentIndex >= 0 && targetIndex >= 0) {
           const newItems = moveItem(items, currentIndex, targetIndex)
           setItems(newItems)
           // コールバックを呼び出す
@@ -86,9 +81,11 @@ export const DraggableY: FC<DraggableProps> = ({ initialItems, onChange }) => {
     return {
       key: item.id,
       draggable: true,
+      // <li ref={elm}></li> と同じ意味
       ref(elm) {
         setElm(String(item.id), elm)
       },
+      /** ターゲット要素の半分より上か下かで挿入先を決定する */
       onDragOver(event) {
         event.preventDefault()
         const elm = $refs.current.get(String(item.id))
@@ -162,24 +159,30 @@ export const DraggableY: FC<DraggableProps> = ({ initialItems, onChange }) => {
 
     if (views && activeId && targetIndex >= 0) {
       const ghostItem = items?.find((target) => target.id === activeId)
-      // ゴーストが必要なら作成
+      // 選択中のアイテムをゴーストとして移動先候補に挿入
       if (ghostItem) {
         const ghost = (
           <li
             key="__ghost__"
-            className="ghost"
+            className="mt-1 w-40 list-none rounded-lg border border-solid border-gray-800 bg-white px-4 text-gray-700 opacity-20 shadow-md"
             {...getGhostProps(ghostItem, targetIndex)}
           >
-            {ghostItem.title}
+            <p>{ghostItem.title}</p>
+            <p>{MAPPED_TODO_PRIORITY_LABEL(targetIndex)}</p>
           </li>
         )
 
+        console.log('before: views.length')
+        console.log(views.length)
         // targetIndexの位置にゴーストを挿入
         views = [
           ...views.slice(0, targetIndex),
           ghost,
           ...views.slice(targetIndex),
         ]
+
+        console.log('after: views.length')
+        console.log(views.length)
       }
     }
 
