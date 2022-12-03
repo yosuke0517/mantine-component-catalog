@@ -3,7 +3,7 @@ import { Todo } from '../types'
 import { Group } from '@mantine/core'
 import { MAPPED_TODO_PRIORITY_LABEL } from '../const/recruit'
 
-type DraggableProps = {
+export type DraggableProps = {
   initialItems: Todo[]
   onChange?: (newItems: Todo[]) => void
 }
@@ -40,6 +40,8 @@ export const DraggableY: FC<DraggableProps> = ({ initialItems, onChange }) => {
           const rect = elm.getBoundingClientRect()
           const posX = event.clientX - rect.left
           const posY = event.clientY - rect.top
+          const img = new Image()
+          img.src = 'example.gif'
           event.dataTransfer.setDragImage(elm, posX, posY)
         }
       },
@@ -172,8 +174,6 @@ export const DraggableY: FC<DraggableProps> = ({ initialItems, onChange }) => {
           </li>
         )
 
-        console.log('before: views.length')
-        console.log(views.length)
         // targetIndexの位置にゴーストを挿入
         views = [
           ...views.slice(0, targetIndex),
