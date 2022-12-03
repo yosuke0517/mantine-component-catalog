@@ -10,6 +10,8 @@ export type Todo = {
   id: number
   created_at: string
   title: string
+  assigned: string
+  priority: number
 }
 
 export type AuthForm = {
