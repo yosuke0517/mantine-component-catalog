@@ -13,6 +13,12 @@ import { delay } from '../utils/delay'
 import { Layout } from '../components/Layout'
 
 const NotificationDemo = () => {
+  const cleanQueue = () => {
+    cleanNotificationsQueue()
+  }
+  const cleanNotice = () => {
+    cleanNotifications()
+  }
   return (
     <Layout title="Notification">
       <Group direction="column" position="center">
@@ -98,10 +104,10 @@ const NotificationDemo = () => {
         >
           非同期データ取得
         </Button>
-        <Button className="w-40" color="gray" onClick={cleanNotificationsQueue}>
+        <Button className="w-40" color="gray" onClick={cleanQueue}>
           Clean queue
         </Button>
-        <Button className="w-40" color="yellow" onClick={cleanNotifications}>
+        <Button className="w-40" color="yellow" onClick={cleanNotice}>
           Clean all
         </Button>
         <Link href="/">
