@@ -155,17 +155,6 @@ export const Draggable: FC<DraggableProps> = ({ initialItems, onChange }) => {
         >
           <p>{item.title}</p>
           <p>{MAPPED_TODO_PRIORITY_LABEL(index)}</p>
-          {/*<CustomCard*/}
-          {/*  title={item.title}*/}
-          {/*  postUrl={*/}
-          {/*    item.post_url*/}
-          {/*      ? `${process.env.NEXT_PUBLIC_SUPABASE_STORAGE_URL}/posts/${item.post_url}`*/}
-          {/*      : ''*/}
-          {/*  }*/}
-          {/*  content={item.content}*/}
-          {/*  status={recruitBadgeComputed(item.status)}*/}
-          {/*  badgeColor={badgeColorComputed(item.status)}*/}
-          {/*/>*/}
         </li>
       )
     })
@@ -198,7 +187,7 @@ export const Draggable: FC<DraggableProps> = ({ initialItems, onChange }) => {
 
   return (
     <Group direction="column">
-      <ul>{getViews()}</ul>
+      <ul className="list-none">{getViews()}</ul>
     </Group>
   )
 }
