@@ -59,6 +59,9 @@ export const DashBord = ({}) => {
         <Button color="yellow" onClick={() => router.push('/hooks')}>
           Hooks Demo
         </Button>
+        <Button color="orange" onClick={() => router.push('/draggable')}>
+          Draggable Demo
+        </Button>
       </Group>
 
       <Center>
