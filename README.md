@@ -4,11 +4,10 @@
 更新日：2022/11/19
 
 ### Webアプリにてよくあるコンポーネントをmantineで作ったやつ
-※余裕があったら素のreactで作ってみて比較したい
+※一部素のreact使ったコンポーネントも入っちゃってます
 
-### デプロイ（コンポーネントカタログなのでstorybookの方を見てほしいかも）
-[デモページ](https://mantine-component-catalog.vercel.app/) ※使用するにはメールアドレス認証が必要になります
-[storybook](https://storybook-for-mantine-component-catalog-pfzo.vercel.app/)
+- [デモページ](https://mantine-component-catalog.vercel.app/) ※使用するにはメールアドレス認証が必要になります
+- [storybook](https://storybook-for-mantine-component-catalog-pfzo.vercel.app/)
 
 
 ### コンポーネントの設計・命名（今までやったことないけど以下のようにやってみる）
