@@ -39,3 +39,7 @@ export const RECRUIT_SELECT_OPTIONS = [
     label: MAPPED_RECRUIT_TYPE_LABEL[RECRUIT_TYPES_CONST.Popular],
   },
 ]
+
+export const MAPPED_TODO_PRIORITY_LABEL = (priorityLabel: number) => {
+  return `優先度${priorityLabel + 1}`
+}

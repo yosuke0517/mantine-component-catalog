@@ -11,6 +11,8 @@ import {
   Container,
   Slider,
 } from '@mantine/core'
+import Link from 'next/link'
+import { ReplyIcon } from '@heroicons/react/solid'
 
 export const MatchRate: NextPage = ({}) => {
   const { data } = useQueryMatchRate()
@@ -66,6 +68,11 @@ export const MatchRate: NextPage = ({}) => {
           ></Slider>
         </Container>
       )}
+      <Center>
+        <Link href="/">
+          <ReplyIcon className="mt-4 h-6 w-6 cursor-pointer text-gray-300" />
+        </Link>
+      </Center>
     </Layout>
   )
 }

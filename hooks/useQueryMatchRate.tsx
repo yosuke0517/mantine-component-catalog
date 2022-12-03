@@ -3,6 +3,8 @@ import { useQuery, useQueryClient } from 'react-query'
 import { supabase } from '../utils/supabase'
 import { SupabaseRealtimePayload } from '@supabase/supabase-js'
 import { MatchRate } from '../types'
+import { showNotification } from '@mantine/notifications'
+import { DatabaseExport } from 'tabler-icons-react'
 
 export const useQueryMatchRate = () => {
   const queryClient = useQueryClient()
@@ -15,6 +17,13 @@ export const useQueryMatchRate = () => {
           id: payload.new.id,
           created_at: payload.new.created_at,
           match_rate: payload.new.match_rate,
+        })
+        showNotification({
+          title: 'Someone updated the performances table',
+          message: `UserID: ${payload.new.id}のマッチ率を更新しました`,
+          icon: <DatabaseExport />,
+          color: 'teal',
+          autoClose: 3000,
         })
       })
       .on('DELETE', (payload: SupabaseRealtimePayload<MatchRate>) => {})

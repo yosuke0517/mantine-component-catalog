@@ -34,19 +34,21 @@ const schema = Yup.object().shape({
   status: Yup.string().required('No status provided.'),
 })
 
+export const recruitBadgeComputed = (status: RecruitTypeValue | '') => {
+  if (!status) return ''
+  return MAPPED_RECRUIT_TYPE_LABEL[status]
+}
+
+export const badgeColorComputed = (status: RecruitTypeValue | '') => {
+  if (!status) return ''
+  return MAPPED_RECRUIT_TYPE_COLOR[status]
+}
+
 const PostList = () => {
   const queryClient = useQueryClient()
   const { data } = useQueryPosts()
   const [isLoading, setIsLoading] = useState(false)
   const [postUrl, setPostUrl] = useState('')
-  const recruitBadgeComputed = (status: RecruitTypeValue | '') => {
-    if (!status) return ''
-    return MAPPED_RECRUIT_TYPE_LABEL[status]
-  }
-  const badgeColorComputed = (status: RecruitTypeValue | '') => {
-    if (!status) return ''
-    return MAPPED_RECRUIT_TYPE_COLOR[status]
-  }
   const form = useForm<Omit<Post, 'id' | 'created_at' | 'post_url'>>({
     schema: yupResolver(schema),
     initialValues: {
