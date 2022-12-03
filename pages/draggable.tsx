@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 import { Group } from '@mantine/core'
-import { Draggable } from '../components/Draggable'
+import { DraggableY } from '../components/DraggableY'
 import { Todo } from '../types'
 import { useQueryTodos } from '../hooks/useQueryTodos'
 import { Layout } from '../components/Layout'
@@ -17,7 +17,7 @@ export const DraggableDemo: NextPage = ({}) => {
     <Layout title="draggable" bg="bg-gray-200">
       <Group>
         {data && (
-          <Draggable
+          <DraggableY
             initialItems={data}
             onChange={(newList) => changeItem(newList)}
           />

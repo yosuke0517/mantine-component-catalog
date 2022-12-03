@@ -8,7 +8,8 @@ type DraggableProps = {
   onChange?: (newItems: Todo[]) => void
 }
 
-export const Draggable: FC<DraggableProps> = ({ initialItems, onChange }) => {
+/** 縦方向のみのドラッグ&ドロップによる入れ替え */
+export const DraggableY: FC<DraggableProps> = ({ initialItems, onChange }) => {
   const [items, setItems] = useState<Todo[] | null>(
     initialItems ? [...initialItems] : null
   )
