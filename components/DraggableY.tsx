@@ -86,6 +86,7 @@ export const DraggableY: FC<DraggableProps> = ({ initialItems, onChange }) => {
     return {
       key: item.id,
       draggable: true,
+      // <li ref={elm}></li> と同じ意味
       ref(elm) {
         setElm(String(item.id), elm)
       },
@@ -162,7 +163,7 @@ export const DraggableY: FC<DraggableProps> = ({ initialItems, onChange }) => {
 
     if (views && activeId && targetIndex >= 0) {
       const ghostItem = items?.find((target) => target.id === activeId)
-      // ゴーストが必要なら作成
+      // 選択中のアイテムをゴーストとして移動先候補に挿入
       if (ghostItem) {
         const ghost = (
           <li
