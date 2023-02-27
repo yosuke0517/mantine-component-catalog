@@ -12,7 +12,7 @@ export const Layout: FC<Props> = ({
   bg = 'bg-black',
   title = 'Mantine',
 }) => {
-  const style = `flex min-h-screen ${bg}`
+  const style = `flex w-full min-h-screen ${bg}`
   return (
     <div className={style}>
       <Head>

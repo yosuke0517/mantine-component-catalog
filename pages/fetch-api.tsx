@@ -8,6 +8,7 @@ import { ReplyIcon } from '@heroicons/react/solid'
 export const FetchData: NextPage = ({}) => {
   return (
     <Layout title="Fetch Data">
+      <p>react-queryでのフェッチのテストページ</p>
       <Grid>
         <Grid.Col span={6}>
           <FetchTodos />

@@ -22,6 +22,7 @@ const NotificationDemo = () => {
   return (
     <Layout title="Notification">
       <Group direction="column" position="center">
+        <p>通知のデモ（ボタンを押してください）</p>
         <Button
           className="w-40"
           onClick={() =>

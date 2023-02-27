@@ -19,6 +19,7 @@ export const MatchRate: NextPage = ({}) => {
   const [matchRate, setMatchRate] = useState<number | undefined>(0)
   useEffect(() => {
     setMatchRate(data?.match_rate)
+    console.log(data)
   }, [data])
   // 複数値が入る可能性を考慮してkeyとして抽象化しておく
   const updateHandler = async (value: number, key: string) => {
@@ -29,7 +30,9 @@ export const MatchRate: NextPage = ({}) => {
   }
   return (
     <Layout title="MatchRate">
-      {data && (
+      <p>subabaseのsubscribeを使用した、リアルタイム監視</p>
+      <p>インディケータを操作したタイミングでDBを更新します</p>
+      {data ? (
         <Grid>
           <Grid.Col>
             <Center>
@@ -47,6 +50,10 @@ export const MatchRate: NextPage = ({}) => {
             </Center>
           </Grid.Col>{' '}
         </Grid>
+      ) : (
+        <p>
+          マッチ率が登録されていません。テストユーザ：ccc@gmail.comを使用してください
+        </p>
       )}
       {data && (
         <Container>

@@ -7,6 +7,7 @@ import { ReplyIcon } from '@heroicons/react/solid'
 export const GroupDemo: NextPage = ({}) => {
   return (
     <Layout title="Group">
+      <p>groupのテストページ</p>
       <p className="m-0">my: md, position: left, grow</p>
       <Group my="md" position="left" grow>
         <Button color="indigo">1</Button>

@@ -11,6 +11,7 @@ const callback = () => alert('callback')
 export const ButtonDemo: NextPage = ({}) => {
   return (
     <Layout title="Button">
+      <p>ボタンのテストページ</p>
       <Group position="center" direction="column">
         <Button
           classNames={{

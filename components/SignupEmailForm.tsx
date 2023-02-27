@@ -57,12 +57,16 @@ export const SignupEmailForm: FC<SignupEmailFormProps> = ({
     if (isRegister) {
       const error = signupCallback(form)
       error.then((e) => {
+        console.log('e')
+        console.log(e)
         if (e?.message) setError(e.message)
       })
       form.reset()
     } else {
       const error = signinCallback(form)
       error.then((e) => {
+        console.log('e')
+        console.log(e)
         if (e?.message) setError(e.message)
       })
       form.reset()
