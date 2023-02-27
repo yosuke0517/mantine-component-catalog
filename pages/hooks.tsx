@@ -48,6 +48,8 @@ const MantineHooks = () => {
   return (
     <Layout title="Hooks">
       <Group position="center" direction="column">
+        <p>mantineに用意されているhooksのデモ</p>
+        <p>useDisclosure</p>
         <Text>
           This page is active <strong>{seconds}</strong> [s] after mount
         </Text>

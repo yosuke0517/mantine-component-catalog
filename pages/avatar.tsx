@@ -39,9 +39,10 @@ const AvatarDemo = () => {
 
   return (
     <Layout title="Profile">
+      <p>アバターのテストページ（カメラアイコンからアップロードできます</p>
       <Group position="center" direction="column">
         <LoadingOverlay visible={isLoading} />
-        <p>アバター写真をPOST出来ます</p>
+
         <Mavatar
           url={`${process.env.NEXT_PUBLIC_SUPABASE_STORAGE_URL}/avatars/${avatarUrl}`}
           uploadCallback={(e) => uploadAvatarImageCallback(e)}

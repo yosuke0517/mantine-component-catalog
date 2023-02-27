@@ -7,6 +7,7 @@ import { ReplyIcon } from '@heroicons/react/solid'
 export const GridDemo: NextPage = ({}) => {
   return (
     <Layout title="Grid">
+      <p>gridのテストページ</p>
       <p>gridは12でmax</p>
       <Grid my="md">
         <Grid.Col

@@ -52,6 +52,8 @@ export const Ctypt: NextPage = ({}) => {
   return (
     <Layout title="Crypto">
       <Group direction="column" position="center">
+        <p>datePickerのデモ</p>
+        <p>選択された日付の仮想通貨の値段を取得し表示します</p>
         <LightningBoltIcon className="mb-4 h-10 w-10 text-blue-500" />
         {isLoading && <Loader />}
         <Text mt="md">

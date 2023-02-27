@@ -150,7 +150,10 @@ export const DraggableY: FC<DraggableProps> = ({ initialItems, onChange }) => {
         <li
           className="mt-1 w-40 list-none rounded-lg border border-solid border-gray-800 bg-white px-4 text-gray-700 shadow-md"
           key={item.id}
-          {...getHandleProps(item, index)}
+          {...getHandleProps(
+            item,
+            index
+          )} /** スプレッド構文で内包されている関数を展開 */
           {...getItemProps(item, index)}
         >
           <p>{item.title}</p>

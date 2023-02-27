@@ -92,7 +92,7 @@ const PostList = () => {
   return (
     <Layout title="PostList">
       <Container className="w-96">
-        <p>求人登録画面</p>
+        <p>求人が登録できるカードのページ</p>
         <form onSubmit={form.onSubmit(handleSubmit)}>
           <TextInput
             mb="md"

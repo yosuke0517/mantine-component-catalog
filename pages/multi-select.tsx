@@ -34,6 +34,7 @@ export const MultiSelectDemo: NextPage = ({}) => {
   )
   return (
     <Layout title="Multi Select">
+      <p>セレクト系のテストページ</p>
       <Container>
         <Text>🚀 What is your most favorite frontend library ?</Text>
         <Center>

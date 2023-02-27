@@ -3,13 +3,13 @@ import Link from 'next/link'
 import { Modal, Button, Group, Paper } from '@mantine/core'
 import { ReplyIcon } from '@heroicons/react/solid'
 import { Layout } from '../components/Layout'
-import { AuthenForm } from '../components/AuthenForm'
 import { ModalContainer } from '../components/ModalContainer'
 
 const ModalDemo = () => {
   const [opened, setOpened] = useState(false)
   return (
     <Layout title="Modal">
+      <p>モーダルのテストページ</p>
       <ModalContainer
         title="モーダルのタイトルが入ります"
         opened={opened}

@@ -4,6 +4,7 @@ import { MantineProvider } from '@mantine/core'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { NotificationsProvider } from '@mantine/notifications'
+import { DashBord } from '../components/DashBord'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -27,7 +28,10 @@ export default function App({ Component, pageProps }: AppProps) {
         }}
       >
         <NotificationsProvider limit={2}>
-          <Component {...pageProps} />
+          <div className="flex">
+            <DashBord />
+            <Component {...pageProps} />
+          </div>
         </NotificationsProvider>
       </MantineProvider>
 
