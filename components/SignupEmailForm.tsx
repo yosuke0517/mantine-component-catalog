@@ -55,13 +55,14 @@ export const SignupEmailForm: FC<SignupEmailFormProps> = ({
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (isRegister) {
-      const error = signupCallback(form)
-      error.then((e) => {
-        console.log('e')
-        console.log(e)
-        if (e?.message) setError(e.message)
-      })
-      form.reset()
+      // 一旦新規登録停止
+      // const error = signupCallback(form)
+      // error.then((e) => {
+      //   console.log('e')
+      //   console.log(e)
+      //   if (e?.message) setError(e.message)
+      // })
+      // form.reset()
     } else {
       const error = signinCallback(form)
       error.then((e) => {
@@ -91,11 +92,15 @@ export const SignupEmailForm: FC<SignupEmailFormProps> = ({
           </Alert>
         )}
         {/*mantineのuseFormを使った場合、ちょっとクセがあるがform.onSubmitに関数を入れる*/}
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form
+          className="flex flex-col items-end"
+          onSubmit={(e) => handleSubmit(e)}
+        >
           <TextInput
             mt="md"
             id="email"
             label="Email*"
+            className="w-full"
             placeholder="example@gmail.com"
             {...form.getInputProps('email')} // mantineのuseFormの場合、この1行で値の表示と更新ができる
             onKeyDown={(e) => {
@@ -106,6 +111,7 @@ export const SignupEmailForm: FC<SignupEmailFormProps> = ({
           <PasswordInput
             mt="md"
             id="password"
+            className="w-full"
             placeholder="password"
             label="Password*"
             description={
@@ -133,21 +139,22 @@ export const SignupEmailForm: FC<SignupEmailFormProps> = ({
             />
           )}
           <Group mt="lg" position="apart">
-            <Anchor
-              component="button"
-              type="button"
-              color="gray"
-              onClick={() => {
-                setIsRegister(!isRegister)
-                setError('')
-              }}
-              size="sm"
-            >
-              {isRegister
-                ? 'Have an account? Login'
-                : "Don't have an account? Register"}
-            </Anchor>
-            <Button type="submit">{isRegister ? 'Register' : 'Login'}</Button>
+            {/*<Anchor*/}
+            {/*  component="button"*/}
+            {/*  type="button"*/}
+            {/*  color="gray"*/}
+            {/*  onClick={() => {*/}
+            {/*    setIsRegister(!isRegister)*/}
+            {/*    setError('')*/}
+            {/*  }}*/}
+            {/*  size="sm"*/}
+            {/*>*/}
+            {/*  {isRegister*/}
+            {/*    ? 'Have an account? Login'*/}
+            {/*    : "Don't have an account? Register"}*/}
+            {/*</Anchor>*/}
+            {/*<Button type="submit">{isRegister ? 'Register' : 'Login'}</Button>*/}
+            <Button type="submit">{'Login'}</Button>
           </Group>
         </form>
       </Group>
