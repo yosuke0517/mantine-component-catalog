@@ -56,13 +56,13 @@ export const SignupEmailForm: FC<SignupEmailFormProps> = ({
     e.preventDefault()
     if (isRegister) {
       // 一旦新規登録停止
-      // const error = signupCallback(form)
-      // error.then((e) => {
-      //   console.log('e')
-      //   console.log(e)
-      //   if (e?.message) setError(e.message)
-      // })
-      // form.reset()
+      const error = signupCallback(form)
+      error.then((e) => {
+        console.log('e')
+        console.log(e)
+        if (e?.message) setError(e.message)
+      })
+      form.reset()
     } else {
       const error = signinCallback(form)
       error.then((e) => {
@@ -139,22 +139,21 @@ export const SignupEmailForm: FC<SignupEmailFormProps> = ({
             />
           )}
           <Group mt="lg" position="apart">
-            {/*<Anchor*/}
-            {/*  component="button"*/}
-            {/*  type="button"*/}
-            {/*  color="gray"*/}
-            {/*  onClick={() => {*/}
-            {/*    setIsRegister(!isRegister)*/}
-            {/*    setError('')*/}
-            {/*  }}*/}
-            {/*  size="sm"*/}
-            {/*>*/}
-            {/*  {isRegister*/}
-            {/*    ? 'Have an account? Login'*/}
-            {/*    : "Don't have an account? Register"}*/}
-            {/*</Anchor>*/}
-            {/*<Button type="submit">{isRegister ? 'Register' : 'Login'}</Button>*/}
-            <Button type="submit">{'Login'}</Button>
+            <Anchor
+              component="button"
+              type="button"
+              color="gray"
+              onClick={() => {
+                setIsRegister(!isRegister)
+                setError('')
+              }}
+              size="sm"
+            >
+              {isRegister
+                ? 'Have an account? Login'
+                : "Don't have an account? Register"}
+            </Anchor>
+            <Button type="submit">{isRegister ? 'Register' : 'Login'}</Button>
           </Group>
         </form>
       </Group>

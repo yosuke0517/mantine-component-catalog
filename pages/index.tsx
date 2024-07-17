@@ -68,24 +68,6 @@ const Home: NextPage = () => {
       ) : (
         ''
       )}
-      <Center>
-        <Link className="text-blue-500" href="/button">
-          button
-        </Link>
-      </Center>
-      <Center>
-        <Link className="text-blue-500" href="/grid">
-          grid
-        </Link>
-        {cards.map((card) => (
-          <Card
-            key={card.id}
-            id={card.id}
-            text={card.text}
-            onDrop={handleDrop}
-          />
-        ))}
-      </Center>
     </div>
   )
 }
